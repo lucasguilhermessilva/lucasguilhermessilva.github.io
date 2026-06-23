@@ -443,9 +443,9 @@
 
     .project-item {
       display: grid;
-      grid-template-columns: 80px 1fr auto;
+      grid-template-columns: 48px 1fr 340px;
       align-items: start;
-      gap: 2rem;
+      gap: 2.25rem;
       padding: 2.5rem;
       border-bottom: 1px solid var(--border);
       transition: background 0.25s;
@@ -570,6 +570,62 @@
       border-color: var(--border2);
       color: var(--text);
     }
+
+    /* PROJECT PREVIEW (mockups SVG on-brand) */
+    .project-preview {
+      align-self: center;
+      width: 100%;
+      aspect-ratio: 16 / 10;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      overflow: hidden;
+      background: var(--bg3);
+      box-shadow: 0 12px 32px rgba(0,0,0,0.35);
+      transition: border-color 0.25s, transform 0.25s, box-shadow 0.25s;
+    }
+
+    .project-item:hover .project-preview {
+      border-color: var(--border2);
+      transform: translateY(-3px);
+      box-shadow: 0 18px 44px rgba(0,0,0,0.45);
+    }
+
+    .project-preview svg { display: block; width: 100%; height: 100%; }
+
+    .project-ctas {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-top: 1.4rem;
+    }
+
+    .project-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      letter-spacing: 0.05em;
+      color: var(--accent);
+      text-decoration: none;
+      border: 1px solid rgba(0,255,136,0.25);
+      padding: 0.45rem 0.95rem;
+      border-radius: 100px;
+      transition: all 0.2s;
+      cursor: none;
+    }
+
+    .project-cta:hover { background: rgba(0,255,136,0.08); border-color: var(--accent); }
+
+    .project-cta.alt { color: var(--accent2); border-color: rgba(77,159,255,0.3); }
+    .project-cta.alt:hover { background: rgba(77,159,255,0.08); border-color: var(--accent2); }
+
+    .project-cta.is-locked {
+      color: var(--muted2);
+      border-color: var(--border);
+      cursor: default;
+    }
+    .project-cta.is-locked:hover { background: none; border-color: var(--border); }
 
     /* IMPACT */
     #impact { background: var(--bg2); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
@@ -777,8 +833,9 @@
       .nav-links, .nav-cta { display: none; }
       .hero-sub { flex-direction: column; gap: 1.5rem; }
       .hero-tags { flex-direction: row; flex-wrap: wrap; }
-      .project-item { grid-template-columns: 50px 1fr; }
+      .project-item { grid-template-columns: 36px 1fr; }
       .project-link { display: none; }
+      .project-preview { grid-column: 1 / -1; order: -1; max-width: 520px; }
       .metrics-grid { grid-template-columns: repeat(2, 1fr); }
       .stack-grid { grid-template-columns: 1fr; }
       .contact-grid { grid-template-columns: 1fr; gap: 3rem; }
@@ -909,12 +966,12 @@
           <div class="hero-sub">
             <p class="hero-desc">
               Backend Developer & AI Engineer construindo agentes inteligentes,
-              pipelines de dados e automações que vão direto pra produção —
-              em saúde, jurídico e além.
+              APIs e automações que vão direto pra produção — em saúde,
+              jurídico e no meu próprio produto.
             </p>
             <div class="hero-tags">
               <span class="hero-tag-item">Python · Node.js · TypeScript</span>
-              <span class="hero-tag-item">OpenAI GPT-4 · Claude · Gemini</span>
+              <span class="hero-tag-item">Claude · OpenAI GPT-5 · Gemini · MCP</span>
               <span class="hero-tag-item">n8n · FastAPI · WhatsApp API</span>
               <span class="hero-tag-item">Railway · AWS · Supabase</span>
               <span class="hero-tag-item">Recife, PE — Remoto</span>
@@ -962,8 +1019,56 @@
 
       <div class="projects-list reveal reveal-delay-3">
 
+        <!-- 01 · NUXIO -->
         <div class="project-item">
           <div class="project-num">01</div>
+          <div class="project-body">
+            <div class="project-header">
+              <span class="project-name">Nuxio</span>
+              <span class="project-status status-prod">● Produto próprio · Live</span>
+            </div>
+            <p class="project-desc">
+              Meu próprio produto: plataforma de agentes de IA que atendem no WhatsApp de pequenas e médias empresas — respondem clientes 24/7, entendem áudio, qualificam e agendam direto no calendário, com uma Área do Cliente pra acompanhar conversas e CRM. Construída em Next.js 16 + TypeScript + Tailwind, deploy estático.
+            </p>
+            <div class="project-tags">
+              <span class="ptag hi">Next.js 16</span>
+              <span class="ptag hi">TypeScript</span>
+              <span class="ptag">Tailwind CSS</span>
+              <span class="ptag">AI Agents</span>
+              <span class="ptag">WhatsApp</span>
+              <span class="ptag">SaaS</span>
+            </div>
+            <div class="project-ctas">
+              <a href="https://nuxio-app.vercel.app" target="_blank" class="project-cta">Ver site ↗</a>
+              <a href="https://github.com/lucasguilhermessilva/nuxio" target="_blank" class="project-cta alt">GitHub ↗</a>
+            </div>
+          </div>
+          <div class="project-preview" aria-hidden="true">
+            <svg viewBox="0 0 320 200" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Preview Nuxio">
+              <rect width="320" height="200" rx="10" fill="#0b0c1a"/>
+              <rect width="320" height="26" fill="#0f1020"/>
+              <circle cx="16" cy="13" r="3.5" fill="#ff6b6b"/><circle cx="28" cy="13" r="3.5" fill="#f5c451"/><circle cx="40" cy="13" r="3.5" fill="#00ff88"/>
+              <rect x="92" y="6" width="184" height="14" rx="7" fill="#05060f"/>
+              <text x="104" y="16" font-family="monospace" font-size="8" fill="#6b6e80">nuxio-app.vercel.app</text>
+              <text x="22" y="74" font-family="Syne, sans-serif" font-weight="800" font-size="30" fill="#eeeef5">NUXIO</text>
+              <text x="23" y="92" font-family="monospace" font-size="8" fill="#00ff88">Agentes de IA que atendem no WhatsApp</text>
+              <rect x="22" y="106" width="118" height="28" rx="6" fill="#00ff88"/>
+              <text x="38" y="124" font-family="Syne, sans-serif" font-weight="700" font-size="10" fill="#05060f">Começar agora</text>
+              <rect x="150" y="106" width="88" height="28" rx="6" fill="none" stroke="#2a2c40"/>
+              <text x="166" y="124" font-family="Syne, sans-serif" font-weight="600" font-size="10" fill="#9598aa">Ver demo</text>
+              <rect x="212" y="42" width="94" height="20" rx="10" fill="#13351f"/>
+              <text x="222" y="55" font-family="monospace" font-size="7.5" fill="#7cffc0">oi, tão abertos?</text>
+              <rect x="204" y="68" width="102" height="20" rx="10" fill="#1a1c2e"/>
+              <text x="214" y="81" font-family="monospace" font-size="7.5" fill="#9598aa">Sim! Posso agendar 🙂</text>
+              <rect x="22" y="156" width="176" height="6" rx="3" fill="#16182a"/>
+              <rect x="22" y="170" width="120" height="6" rx="3" fill="#16182a"/>
+            </svg>
+          </div>
+        </div>
+
+        <!-- 02 · payments-wallet-go -->
+        <div class="project-item">
+          <div class="project-num">02</div>
           <div class="project-body">
             <div class="project-header">
               <span class="project-name">payments-wallet-go</span>
@@ -981,19 +1086,40 @@
               <span class="ptag">ACID</span>
               <span class="ptag">Fintech</span>
             </div>
+            <div class="project-ctas">
+              <a href="https://github.com/lucasguilhermessilva/payments-wallet-go" target="_blank" class="project-cta">Ver no GitHub ↗</a>
+            </div>
           </div>
-          <a href="https://github.com/lucasguilhermessilva/payments-wallet-go" target="_blank" class="project-link" title="Ver no GitHub">↗</a>
+          <div class="project-preview" aria-hidden="true">
+            <svg viewBox="0 0 320 200" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Preview payments-wallet-go">
+              <rect width="320" height="200" rx="10" fill="#0b0c1a"/>
+              <rect width="320" height="26" fill="#0f1020"/>
+              <circle cx="16" cy="13" r="3.5" fill="#ff6b6b"/><circle cx="28" cy="13" r="3.5" fill="#f5c451"/><circle cx="40" cy="13" r="3.5" fill="#00ff88"/>
+              <text x="92" y="16" font-family="monospace" font-size="8" fill="#6b6e80">go run ./cmd/api</text>
+              <text x="18" y="52" font-family="monospace" font-size="9.5" fill="#00ff88">$ curl -X POST /transfer</text>
+              <text x="18" y="70" font-family="monospace" font-size="9.5" fill="#4d9fff">HTTP/1.1 201 Created</text>
+              <text x="18" y="92" font-family="monospace" font-size="9.5" fill="#6b6e80">{</text>
+              <text x="34" y="108" font-family="monospace" font-size="9.5" fill="#eeeef5">"status": <tspan fill="#7cffc0">"ok"</tspan>,</text>
+              <text x="34" y="124" font-family="monospace" font-size="9.5" fill="#eeeef5">"idempotent": <tspan fill="#f5c451">true</tspan>,</text>
+              <text x="34" y="140" font-family="monospace" font-size="9.5" fill="#eeeef5">"balance": <tspan fill="#f5c451">1840.00</tspan></text>
+              <text x="18" y="156" font-family="monospace" font-size="9.5" fill="#6b6e80">}</text>
+              <rect x="18" y="170" width="40" height="16" rx="8" fill="#0f2417" stroke="#1f5a3a"/><text x="26" y="181" font-family="monospace" font-size="7.5" fill="#00ff88">ACID</text>
+              <rect x="64" y="170" width="44" height="16" rx="8" fill="#101f3a" stroke="#27406e"/><text x="72" y="181" font-family="monospace" font-size="7.5" fill="#4d9fff">Redis</text>
+              <rect x="114" y="170" width="40" height="16" rx="8" fill="#1a1c2e" stroke="#2a2c40"/><text x="122" y="181" font-family="monospace" font-size="7.5" fill="#9598aa">JWT</text>
+            </svg>
+          </div>
         </div>
 
+        <!-- 03 · Perazzo Vision -->
         <div class="project-item">
-          <div class="project-num">02</div>
+          <div class="project-num">03</div>
           <div class="project-body">
             <div class="project-header">
               <span class="project-name">Perazzo Vision</span>
               <span class="project-status status-prod">● Produção</span>
             </div>
             <p class="project-desc">
-              Pipeline ponta a ponta que combina OCR + Google Gemini para extrair e estruturar automaticamente dados de PDFs de processos jurídicos. Eliminou a triagem manual de documentos e reduziu o tempo de análise em mais de 80%.
+              Pipeline ponta a ponta que combina OCR + Google Gemini para extrair e estruturar automaticamente dados de PDFs de processos jurídicos previdenciários. Eliminou a triagem manual de documentos e reduziu o tempo de análise em mais de 80%.
             </p>
             <div class="project-tags">
               <span class="ptag hi">Python</span>
@@ -1003,54 +1129,176 @@
               <span class="ptag">PDF Processing</span>
               <span class="ptag">IA Generativa</span>
             </div>
-          </div>
-          <a href="https://github.com/lucasguilhermessilva/perazzo-vision" target="_blank" class="project-link" title="Ver no GitHub">↗</a>
-        </div>
-
-        <div class="project-item">
-          <div class="project-num">03</div>
-          <div class="project-body">
-            <div class="project-header">
-              <span class="project-name">App Expurgos</span>
-              <span class="project-status status-prod">● Produção</span>
-            </div>
-            <p class="project-desc">
-              Motor de cálculos financeiros que automatiza expurgos inflacionários para advocacia previdenciária. Traduz regras de negócio complexas com juros compostos em código funcional, eliminando erros operacionais do setor jurídico.
-            </p>
-            <div class="project-tags">
-              <span class="ptag hi">Python</span>
-              <span class="ptag">Algoritmos Financeiros</span>
-              <span class="ptag">Automação</span>
-              <span class="ptag">Advocacia Previdenciária</span>
+            <div class="project-ctas">
+              <a href="https://github.com/lucasguilhermessilva/perazzo-vision" target="_blank" class="project-cta">Ver no GitHub ↗</a>
             </div>
           </div>
-          <a href="https://github.com/lucasguilhermessilva/app-expurgos" target="_blank" class="project-link" title="Ver no GitHub">↗</a>
+          <div class="project-preview" aria-hidden="true">
+            <svg viewBox="0 0 320 200" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Preview Perazzo Vision">
+              <rect width="320" height="200" rx="10" fill="#0b0c1a"/>
+              <rect width="320" height="26" fill="#0f1020"/>
+              <circle cx="16" cy="13" r="3.5" fill="#ff6b6b"/><circle cx="28" cy="13" r="3.5" fill="#f5c451"/><circle cx="40" cy="13" r="3.5" fill="#00ff88"/>
+              <text x="92" y="16" font-family="monospace" font-size="8" fill="#6b6e80">perazzo-vision · OCR + Gemini</text>
+              <rect x="22" y="44" width="78" height="104" rx="5" fill="#0f1020" stroke="#2a2c40"/>
+              <rect x="32" y="56" width="58" height="6" rx="2" fill="#2a2c40"/>
+              <rect x="32" y="68" width="50" height="4" rx="2" fill="#1f2236"/>
+              <rect x="32" y="78" width="58" height="4" rx="2" fill="#1f2236"/>
+              <rect x="32" y="108" width="46" height="4" rx="2" fill="#1f2236"/>
+              <rect x="32" y="118" width="58" height="4" rx="2" fill="#1f2236"/>
+              <rect x="22" y="94" width="78" height="3" fill="#00ff88" opacity="0.85"/>
+              <path d="M108 100 H148" stroke="#00ff88" stroke-width="1.5"/>
+              <path d="M148 100 l-7 -4 v8 z" fill="#00ff88"/>
+              <rect x="106" y="106" width="46" height="16" rx="8" fill="#101f3a" stroke="#4d9fff"/>
+              <text x="113" y="117" font-family="monospace" font-size="7.5" fill="#4d9fff">Gemini</text>
+              <text x="160" y="56" font-family="monospace" font-size="9" fill="#6b6e80">{</text>
+              <text x="170" y="74" font-family="monospace" font-size="9" fill="#eeeef5">"cpf": <tspan fill="#7cffc0">"***"</tspan>,</text>
+              <text x="170" y="90" font-family="monospace" font-size="9" fill="#eeeef5">"benef": <tspan fill="#7cffc0">"LOAS"</tspan>,</text>
+              <text x="170" y="106" font-family="monospace" font-size="9" fill="#eeeef5">"valor": <tspan fill="#f5c451">2310.55</tspan></text>
+              <text x="160" y="122" font-family="monospace" font-size="9" fill="#6b6e80">}</text>
+              <rect x="160" y="150" width="132" height="22" rx="11" fill="#0f2417" stroke="#1f5a3a"/>
+              <text x="172" y="165" font-family="monospace" font-size="9" fill="#00ff88">−80% no tempo de triagem</text>
+            </svg>
+          </div>
         </div>
 
+        <!-- 04 · legal-doc-processor-api -->
         <div class="project-item">
           <div class="project-num">04</div>
           <div class="project-body">
             <div class="project-header">
-              <span class="project-name">Carol — AI Agent para Saúde</span>
+              <span class="project-name">legal-doc-processor-api</span>
+              <span class="project-status status-dev">◎ API · Open Source</span>
+            </div>
+            <p class="project-desc">
+              API REST que empacota o pipeline do Perazzo Vision: recebe PDFs jurídicos (extratos INSS, certidões, processos), roda OCR + Google Gemini e devolve JSON estruturado — com processamento em lote, health check e documentação Swagger. Construída em FastAPI e empacotada com Docker.
+            </p>
+            <div class="project-tags">
+              <span class="ptag hi">FastAPI</span>
+              <span class="ptag hi">Python</span>
+              <span class="ptag">Google Gemini</span>
+              <span class="ptag">OCR</span>
+              <span class="ptag">Swagger</span>
+              <span class="ptag">Docker</span>
+            </div>
+            <div class="project-ctas">
+              <a href="https://github.com/lucasguilhermessilva/legal-doc-processor-api" target="_blank" class="project-cta">Ver no GitHub ↗</a>
+            </div>
+          </div>
+          <div class="project-preview" aria-hidden="true">
+            <svg viewBox="0 0 320 200" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Preview legal-doc-processor-api">
+              <rect width="320" height="200" rx="10" fill="#0b0c1a"/>
+              <rect width="320" height="26" fill="#0f1020"/>
+              <circle cx="16" cy="13" r="3.5" fill="#ff6b6b"/><circle cx="28" cy="13" r="3.5" fill="#f5c451"/><circle cx="40" cy="13" r="3.5" fill="#00ff88"/>
+              <text x="92" y="16" font-family="monospace" font-size="8" fill="#6b6e80">localhost:8000/docs</text>
+              <text x="20" y="46" font-family="Syne, sans-serif" font-weight="700" font-size="11" fill="#eeeef5">Legal Doc Processor API</text>
+              <rect x="20" y="56" width="282" height="22" rx="4" fill="#0f2417" stroke="#1f5a3a"/>
+              <rect x="26" y="60" width="42" height="14" rx="3" fill="#00ff88"/><text x="31" y="70" font-family="monospace" font-size="7.5" font-weight="700" fill="#05060f">POST</text>
+              <text x="76" y="70" font-family="monospace" font-size="9" fill="#cfe9da">/extract</text>
+              <rect x="20" y="82" width="282" height="22" rx="4" fill="#0f2417" stroke="#1f5a3a"/>
+              <rect x="26" y="86" width="42" height="14" rx="3" fill="#00ff88"/><text x="31" y="96" font-family="monospace" font-size="7.5" font-weight="700" fill="#05060f">POST</text>
+              <text x="76" y="96" font-family="monospace" font-size="9" fill="#cfe9da">/extract/batch</text>
+              <rect x="20" y="108" width="282" height="22" rx="4" fill="#101f3a" stroke="#27406e"/>
+              <rect x="26" y="112" width="42" height="14" rx="3" fill="#4d9fff"/><text x="34" y="122" font-family="monospace" font-size="7.5" font-weight="700" fill="#05060f">GET</text>
+              <text x="76" y="122" font-family="monospace" font-size="9" fill="#cdd9ef">/supported-types</text>
+              <rect x="20" y="134" width="282" height="22" rx="4" fill="#101f3a" stroke="#27406e"/>
+              <rect x="26" y="138" width="42" height="14" rx="3" fill="#4d9fff"/><text x="34" y="148" font-family="monospace" font-size="7.5" font-weight="700" fill="#05060f">GET</text>
+              <text x="76" y="148" font-family="monospace" font-size="9" fill="#cdd9ef">/health</text>
+              <text x="20" y="174" font-family="monospace" font-size="8" fill="#6b6e80">JSON estruturado · lote de até 10 arquivos</text>
+            </svg>
+          </div>
+        </div>
+
+        <!-- 05 · App Expurgos -->
+        <div class="project-item">
+          <div class="project-num">05</div>
+          <div class="project-body">
+            <div class="project-header">
+              <span class="project-name">App Expurgos</span>
+              <span class="project-status status-prod">● Produção · Live</span>
+            </div>
+            <p class="project-desc">
+              Motor de cálculos financeiros que automatiza expurgos inflacionários (Bresser, Verão, Collor I e II) para advocacia previdenciária. Traduz regras de negócio complexas com juros compostos em código funcional, lê extratos antigos com IA e elimina erros operacionais do setor jurídico.
+            </p>
+            <div class="project-tags">
+              <span class="ptag hi">Node.js</span>
+              <span class="ptag hi">Google Gemini</span>
+              <span class="ptag">JavaScript</span>
+              <span class="ptag">Cálculos Financeiros</span>
+              <span class="ptag">Vercel</span>
+            </div>
+            <div class="project-ctas">
+              <a href="https://app-expurgos.vercel.app" target="_blank" class="project-cta">Ver site ↗</a>
+              <a href="https://github.com/lucasguilhermessilva/app-expurgos" target="_blank" class="project-cta alt">GitHub ↗</a>
+            </div>
+          </div>
+          <div class="project-preview" aria-hidden="true">
+            <svg viewBox="0 0 320 200" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Preview App Expurgos">
+              <rect width="320" height="200" rx="10" fill="#0b0c1a"/>
+              <rect width="320" height="26" fill="#0f1020"/>
+              <circle cx="16" cy="13" r="3.5" fill="#ff6b6b"/><circle cx="28" cy="13" r="3.5" fill="#f5c451"/><circle cx="40" cy="13" r="3.5" fill="#00ff88"/>
+              <rect x="92" y="6" width="176" height="14" rx="7" fill="#05060f"/>
+              <text x="104" y="16" font-family="monospace" font-size="8" fill="#6b6e80">app-expurgos.vercel.app</text>
+              <text x="20" y="46" font-family="Syne, sans-serif" font-weight="700" font-size="11" fill="#eeeef5">Expurgos inflacionários</text>
+              <text x="20" y="66" font-family="monospace" font-size="8" fill="#6b6e80">PLANO</text>
+              <text x="150" y="66" font-family="monospace" font-size="8" fill="#6b6e80">ÍNDICE</text>
+              <text x="244" y="66" font-family="monospace" font-size="8" fill="#6b6e80">VALOR</text>
+              <line x1="20" y1="72" x2="300" y2="72" stroke="#1f2236"/>
+              <text x="20" y="90" font-family="monospace" font-size="9" fill="#eeeef5">Bresser</text><text x="150" y="90" font-family="monospace" font-size="9" fill="#9598aa">26,06%</text><text x="244" y="90" font-family="monospace" font-size="9" fill="#eeeef5">R$ 1.204</text>
+              <text x="20" y="110" font-family="monospace" font-size="9" fill="#eeeef5">Verão</text><text x="150" y="110" font-family="monospace" font-size="9" fill="#9598aa">42,72%</text><text x="244" y="110" font-family="monospace" font-size="9" fill="#eeeef5">R$ 2.190</text>
+              <text x="20" y="130" font-family="monospace" font-size="9" fill="#eeeef5">Collor I</text><text x="150" y="130" font-family="monospace" font-size="9" fill="#9598aa">44,80%</text><text x="244" y="130" font-family="monospace" font-size="9" fill="#eeeef5">R$ 3.870</text>
+              <rect x="20" y="144" width="282" height="26" rx="5" fill="#0f2417" stroke="#1f5a3a"/>
+              <text x="30" y="161" font-family="Syne, sans-serif" font-weight="700" font-size="10" fill="#00ff88">TOTAL APURADO</text>
+              <text x="210" y="161" font-family="monospace" font-size="11" fill="#00ff88">R$ 7.264,00</text>
+            </svg>
+          </div>
+        </div>
+
+        <!-- 06 · Agentes de IA (WhatsApp) -->
+        <div class="project-item">
+          <div class="project-num">06</div>
+          <div class="project-body">
+            <div class="project-header">
+              <span class="project-name">Agentes de IA Conversacionais</span>
               <span class="project-status status-prod">● Produção</span>
             </div>
             <p class="project-desc">
-              Agente conversacional via WhatsApp para clínica médica (MC Imagem & Vida / MC Saúde). Atendimento automatizado 24/7, triagem de pacientes e agendamento sem intervenção humana — desenvolvido na plataforma Fast IA.
+              Agentes conversacionais via WhatsApp para clínicas e empresas, desenvolvidos na Fast IA. Atendimento automatizado 24/7, triagem, qualificação e agendamento sem intervenção humana — com integração a calendário e planilhas. Orquestração em n8n + LLMs sobre a Evolution API.
             </p>
             <div class="project-tags">
               <span class="ptag hi">n8n</span>
-              <span class="ptag hi">OpenAI GPT-4</span>
+              <span class="ptag hi">OpenAI GPT-5</span>
               <span class="ptag">Node.js</span>
               <span class="ptag">Evolution API</span>
               <span class="ptag">WhatsApp</span>
               <span class="ptag">Google Sheets</span>
             </div>
+            <div class="project-ctas">
+              <span class="project-cta is-locked">🔒 Projeto sob NDA</span>
+            </div>
           </div>
-          <span class="project-link" title="NDA">🔒</span>
+          <div class="project-preview" aria-hidden="true">
+            <svg viewBox="0 0 320 200" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Preview Agentes de IA no WhatsApp">
+              <rect width="320" height="200" rx="10" fill="#0b0c1a"/>
+              <rect width="320" height="26" fill="#0f1020"/>
+              <circle cx="16" cy="13" r="3.5" fill="#ff6b6b"/><circle cx="28" cy="13" r="3.5" fill="#f5c451"/><circle cx="40" cy="13" r="3.5" fill="#00ff88"/>
+              <text x="92" y="16" font-family="monospace" font-size="8" fill="#6b6e80">WhatsApp · Agente IA</text>
+              <rect x="18" y="40" width="172" height="24" rx="12" fill="#1a1c2e"/>
+              <text x="30" y="55" font-family="monospace" font-size="8" fill="#cdd2e0">Quero marcar um exame</text>
+              <rect x="96" y="74" width="206" height="24" rx="12" fill="#13351f"/>
+              <text x="108" y="89" font-family="monospace" font-size="8" fill="#7cffc0">Claro! Pode ser quinta 14h? 🗓️</text>
+              <rect x="18" y="108" width="96" height="24" rx="12" fill="#1a1c2e"/>
+              <text x="30" y="123" font-family="monospace" font-size="8" fill="#cdd2e0">Perfeito 🙌</text>
+              <rect x="96" y="142" width="58" height="22" rx="11" fill="#13351f"/>
+              <circle cx="112" cy="153" r="3" fill="#7cffc0"/><circle cx="124" cy="153" r="3" fill="#7cffc0" opacity="0.6"/><circle cx="136" cy="153" r="3" fill="#7cffc0" opacity="0.3"/>
+              <rect x="232" y="142" width="70" height="22" rx="11" fill="#0f2417" stroke="#1f5a3a"/>
+              <text x="244" y="157" font-family="monospace" font-size="8" fill="#00ff88">24/7</text>
+            </svg>
+          </div>
         </div>
 
+        <!-- 07 · Agente MASTER -->
         <div class="project-item">
-          <div class="project-num">05</div>
+          <div class="project-num">07</div>
           <div class="project-body">
             <div class="project-header">
               <span class="project-name">Agente MASTER — AI Ops</span>
@@ -1067,12 +1315,32 @@
               <span class="ptag">Monitoring</span>
               <span class="ptag">AI Ops</span>
             </div>
+            <div class="project-ctas">
+              <span class="project-cta is-locked">🔜 Em breve</span>
+            </div>
           </div>
-          <span class="project-link" title="Em breve">🔜</span>
+          <div class="project-preview" aria-hidden="true">
+            <svg viewBox="0 0 320 200" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Preview Agente MASTER">
+              <rect width="320" height="200" rx="10" fill="#0b0c1a"/>
+              <rect width="320" height="26" fill="#0f1020"/>
+              <circle cx="16" cy="13" r="3.5" fill="#ff6b6b"/><circle cx="28" cy="13" r="3.5" fill="#f5c451"/><circle cx="40" cy="13" r="3.5" fill="#00ff88"/>
+              <text x="92" y="16" font-family="monospace" font-size="8" fill="#6b6e80">AI Ops · Monitor</text>
+              <text x="20" y="46" font-family="Syne, sans-serif" font-weight="700" font-size="11" fill="#eeeef5">Agentes — tempo real</text>
+              <rect x="20" y="56" width="282" height="22" rx="4" fill="#0f1020" stroke="#1f2236"/>
+              <circle cx="33" cy="67" r="4" fill="#00ff88"/><text x="44" y="71" font-family="monospace" font-size="8.5" fill="#cdd2e0">Agente Saúde</text><text x="246" y="71" font-family="monospace" font-size="8" fill="#00ff88">online</text>
+              <rect x="20" y="82" width="282" height="22" rx="4" fill="#0f1020" stroke="#1f2236"/>
+              <circle cx="33" cy="93" r="4" fill="#00ff88"/><text x="44" y="97" font-family="monospace" font-size="8.5" fill="#cdd2e0">Agente Jurídico</text><text x="246" y="97" font-family="monospace" font-size="8" fill="#00ff88">online</text>
+              <rect x="20" y="108" width="282" height="22" rx="4" fill="#0f1020" stroke="#1f2236"/>
+              <circle cx="33" cy="119" r="4" fill="#ff6b6b"/><text x="44" y="123" font-family="monospace" font-size="8.5" fill="#cdd2e0">Agente Vendas</text><text x="250" y="123" font-family="monospace" font-size="8" fill="#ff6b6b">alerta</text>
+              <polyline points="20,160 50,150 80,156 110,142 140,148 170,134 200,140 230,128 260,132 300,120" fill="none" stroke="#00ff88" stroke-width="1.5"/>
+              <text x="20" y="182" font-family="monospace" font-size="8" fill="#6b6e80">uptime 99.9% · latência 1.2s</text>
+            </svg>
+          </div>
         </div>
 
+        <!-- 08 · COREN-PE -->
         <div class="project-item">
-          <div class="project-num">06</div>
+          <div class="project-num">08</div>
           <div class="project-body">
             <div class="project-header">
               <span class="project-name">COREN-PE — Infra & Automação</span>
@@ -1090,8 +1358,76 @@
               <span class="ptag">cPanel</span>
               <span class="ptag">SIGEN</span>
             </div>
+            <div class="project-ctas">
+              <span class="project-cta is-locked">🔒 Sistema interno</span>
+            </div>
           </div>
-          <span class="project-link" title="Interno">🔒</span>
+          <div class="project-preview" aria-hidden="true">
+            <svg viewBox="0 0 320 200" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Preview COREN-PE">
+              <rect width="320" height="200" rx="10" fill="#0b0c1a"/>
+              <rect width="320" height="26" fill="#0f1020"/>
+              <circle cx="16" cy="13" r="3.5" fill="#ff6b6b"/><circle cx="28" cy="13" r="3.5" fill="#f5c451"/><circle cx="40" cy="13" r="3.5" fill="#00ff88"/>
+              <text x="92" y="16" font-family="monospace" font-size="8" fill="#6b6e80">infra · automação</text>
+              <rect x="18" y="60" width="74" height="40" rx="6" fill="#0f1020" stroke="#27406e"/>
+              <text x="55" y="78" font-family="monospace" font-size="9" fill="#4d9fff" text-anchor="middle">Python</text>
+              <text x="55" y="91" font-family="monospace" font-size="7" fill="#6b6e80" text-anchor="middle">cron 02:00</text>
+              <path d="M92 80 H118" stroke="#2a2c40" stroke-width="1.5"/><path d="M118 80 l-7 -4 v8 z" fill="#2a2c40"/>
+              <rect x="120" y="60" width="80" height="40" rx="6" fill="#0f1020" stroke="#1f5a3a"/>
+              <text x="160" y="78" font-family="monospace" font-size="8.5" fill="#00ff88" text-anchor="middle">API SIGEN</text>
+              <text x="160" y="91" font-family="monospace" font-size="7" fill="#6b6e80" text-anchor="middle">/COFEN</text>
+              <path d="M200 80 H226" stroke="#2a2c40" stroke-width="1.5"/><path d="M226 80 l-7 -4 v8 z" fill="#2a2c40"/>
+              <rect x="228" y="60" width="74" height="40" rx="6" fill="#0f1020" stroke="#27406e"/>
+              <text x="265" y="78" font-family="monospace" font-size="9" fill="#4d9fff" text-anchor="middle">Mailjet</text>
+              <text x="265" y="91" font-family="monospace" font-size="7" fill="#6b6e80" text-anchor="middle">e-mail TI</text>
+              <rect x="18" y="120" width="284" height="56" rx="6" fill="#0f1020" stroke="#1f2236"/>
+              <text x="30" y="138" font-family="monospace" font-size="8" fill="#6b6e80">Dashboard TI</text>
+              <rect x="30" y="146" width="60" height="20" rx="4" fill="#101f3a"/><text x="38" y="160" font-family="monospace" font-size="8" fill="#4d9fff">230 chamados</text>
+              <rect x="98" y="146" width="60" height="20" rx="4" fill="#0f2417"/><text x="106" y="160" font-family="monospace" font-size="8" fill="#00ff88">SLA 98%</text>
+              <rect x="166" y="146" width="70" height="20" rx="4" fill="#1a1c2e"/><text x="174" y="160" font-family="monospace" font-size="8" fill="#9598aa">12 sistemas</text>
+            </svg>
+          </div>
+        </div>
+
+        <!-- 09 · ChatBot FURIA -->
+        <div class="project-item">
+          <div class="project-num">09</div>
+          <div class="project-body">
+            <div class="project-header">
+              <span class="project-name">FURIA Fan-Bot</span>
+              <span class="project-status status-dev">◎ Projeto</span>
+            </div>
+            <p class="project-desc">
+              Chatbot interativo que fiz para os fãs da FURIA Esports (CS:GO): consulta resultados das últimas partidas, calendário dos próximos jogos, estatísticas do elenco, loja oficial e memes da comunidade — tudo em uma interface de chat. Front-end em HTML, CSS e JavaScript puro.
+            </p>
+            <div class="project-tags">
+              <span class="ptag hi">JavaScript</span>
+              <span class="ptag">HTML5</span>
+              <span class="ptag">CSS3</span>
+              <span class="ptag">ChatBot</span>
+              <span class="ptag">Esports</span>
+            </div>
+            <div class="project-ctas">
+              <a href="https://github.com/lucasguilhermessilva/ChatBot-FuriaEsports" target="_blank" class="project-cta">Ver no GitHub ↗</a>
+            </div>
+          </div>
+          <div class="project-preview" aria-hidden="true">
+            <svg viewBox="0 0 320 200" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Preview FURIA Fan-Bot">
+              <rect width="320" height="200" rx="10" fill="#0b0c1a"/>
+              <rect width="320" height="30" fill="#000000"/>
+              <path d="M16 22 L24 8 L32 22 Z" fill="#eeeef5"/>
+              <text x="40" y="20" font-family="Syne, sans-serif" font-weight="800" font-size="12" fill="#eeeef5" letter-spacing="2">FURIA</text>
+              <text x="250" y="20" font-family="monospace" font-size="8" fill="#6b6e80">fan-bot 🐆</text>
+              <rect x="150" y="44" width="152" height="22" rx="11" fill="#1a1c2e"/>
+              <text x="162" y="58" font-family="monospace" font-size="8" fill="#cdd2e0">próximos jogos</text>
+              <rect x="18" y="76" width="220" height="58" rx="8" fill="#0f1020" stroke="#2a2c40"/>
+              <text x="30" y="94" font-family="Syne, sans-serif" font-weight="700" font-size="11" fill="#eeeef5">FURIA  vs  NAVI</text>
+              <text x="30" y="111" font-family="monospace" font-size="8.5" fill="#9598aa">Hoje · 18h · IEM Major</text>
+              <rect x="30" y="118" width="56" height="10" rx="3" fill="#161821"/>
+              <rect x="18" y="146" width="86" height="22" rx="11" fill="#000000" stroke="#2a2c40"/><text x="30" y="160" font-family="monospace" font-size="8" fill="#eeeef5">resultados</text>
+              <rect x="112" y="146" width="64" height="22" rx="11" fill="#000000" stroke="#2a2c40"/><text x="124" y="160" font-family="monospace" font-size="8" fill="#eeeef5">elenco</text>
+              <rect x="184" y="146" width="54" height="22" rx="11" fill="#000000" stroke="#2a2c40"/><text x="196" y="160" font-family="monospace" font-size="8" fill="#eeeef5">loja</text>
+            </svg>
+          </div>
         </div>
 
       </div>
@@ -1137,23 +1473,29 @@
         <div class="stack-block">
           <div class="stack-title"><span class="stack-icon">🧠</span> IA & Agentes</div>
           <div class="stack-items">
-            <span class="sitem">OpenAI GPT-4</span>
-            <span class="sitem">Google Gemini</span>
+            <span class="sitem">Claude (Opus / Sonnet)</span>
+            <span class="sitem">Claude Code</span>
             <span class="sitem">Claude API</span>
-            <span class="sitem">n8n Workflows</span>
+            <span class="sitem">OpenAI GPT-5</span>
+            <span class="sitem">Google Gemini</span>
+            <span class="sitem">MCP</span>
             <span class="sitem">AI Agents</span>
-            <span class="sitem">Prompt Engineering</span>
             <span class="sitem">RAG</span>
-            <span class="sitem">LLM Integration</span>
+            <span class="sitem">Prompt Engineering</span>
+            <span class="sitem">Tool Use / Function Calling</span>
+            <span class="sitem">Embeddings</span>
+            <span class="sitem">n8n Workflows</span>
           </div>
         </div>
         <div class="stack-block">
           <div class="stack-title"><span class="stack-icon">⚙️</span> Backend & APIs</div>
           <div class="stack-items">
             <span class="sitem">Python</span>
+            <span class="sitem">Go</span>
             <span class="sitem">FastAPI</span>
             <span class="sitem">Node.js</span>
             <span class="sitem">TypeScript</span>
+            <span class="sitem">Next.js</span>
             <span class="sitem">PHP</span>
             <span class="sitem">REST APIs</span>
             <span class="sitem">Spring Boot</span>
@@ -1328,9 +1670,9 @@
 
     // Stack ticker
     const items = [
-      'Python', 'Node.js', 'TypeScript', 'n8n', 'OpenAI GPT-4',
-      'FastAPI', 'PostgreSQL', 'Railway', 'Supabase', 'AWS',
-      'Docker', 'OCR / ETL', 'REST APIs', 'WhatsApp API', 'Claude API',
+      'Python', 'Go', 'Node.js', 'TypeScript', 'Next.js', 'n8n', 'OpenAI GPT-5',
+      'FastAPI', 'Tailwind CSS', 'PostgreSQL', 'Redis', 'Railway', 'Supabase', 'AWS',
+      'Docker', 'OCR / ETL', 'REST APIs', 'WhatsApp API', 'Claude API', 'Claude Code', 'MCP', 'AI Agents',
       'Evolution API', 'Google Gemini', 'PHP', 'MySQL', 'Linux',
       'Git / GitHub', 'Spring Boot', 'Google Sheets API', 'Mailjet'
     ];
